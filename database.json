@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "driver": "pg",
+    "user": "postgres",
+    "password": "root",
+    "host": "localhost",
+    "database": "sarthak_furniture",
+    "port": 8000
+  }
+}
