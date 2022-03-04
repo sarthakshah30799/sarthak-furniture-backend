@@ -1,4 +1,4 @@
-import AWS from "aws-sdk";
+import * as AWS from "aws-sdk";
 import multerS3 from "multer-s3";
 import multer from "multer";
 
