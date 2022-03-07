@@ -20,7 +20,6 @@
     "mysql2": "^2.3.3",
     "mysql2-promise": "^0.1.4",
     "nodemon": "^2.0.12",
-    "npm-windows-upgrade": "^6.0.1",
     "path": "^0.12.7",
     "pg": "^8.7.1",
     "postgraphile": "^4.12.8",
