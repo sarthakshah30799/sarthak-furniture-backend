@@ -14,5 +14,6 @@ export default postgraphile(
     watchPg: true,
     graphiql: true,
     enhanceGraphiql: true,
+    retryOnInitFail: true,
   }
 );
