@@ -38,7 +38,7 @@
   },
   "scripts": {
     "build": "babel src/server.ts",
-    "start": "npm run build && nodemon src/server.ts"
+    "start": "nodemon src/server.ts"
   },
   "repository": {
     "type": "git",
