@@ -1,6 +1,6 @@
 import * as pg from "pg";
 
-const port: any = process.env.PORT || 8000;
+const port: any = process.env.PG_PORT || 8000;
 const postgresqlConnection = () => {
   const client = new pg.Client({
     host: process.env.PG_HOST || "localhost",

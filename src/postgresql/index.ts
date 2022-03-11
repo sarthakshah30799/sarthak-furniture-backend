@@ -1,6 +1,6 @@
 import { postgraphile } from "postgraphile";
 
-const port: any = process.env.PORT || 8000;
+const port: any = process.env.PG_PORT || 8000;
 export default postgraphile(
   {
     host: process.env.PG_HOST || "localhost",
