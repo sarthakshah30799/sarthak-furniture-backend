@@ -4,14 +4,16 @@ import * as cors from "cors";
 import postgresqlConnection from "./postgresql/home";
 
 import * as dotenv from "dotenv";
-
 dotenv.config();
+
+const port = process.env.PORT || 5000;
+
 const app = express();
 app.use(cors());
 
 app.use(postgraphileConnection);
 app.use(postgresqlConnection);
 
-app.listen(5000, () => {
-  console.log("Server running on 5000");
+app.listen(port, () => {
+  console.log("Server running on ", port);
 });
