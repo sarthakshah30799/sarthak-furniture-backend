@@ -2,11 +2,11 @@ import * as pg from "pg";
 
 const postgresqlConnection = () => {
   const client = new pg.Client({
-    host: "localhost",
+    host: process.env.PG_HOST || "localhost",
     port: 8000,
-    user: "postgres",
-    password: "root",
-    database: "sarthak_furniture",
+    user: process.env.PG_USER || "postgres",
+    password: process.env.PG_PASSWORD || "root",
+    database: process.env.PG_DATABASE || "sarthak_furniture",
   });
 
   client
