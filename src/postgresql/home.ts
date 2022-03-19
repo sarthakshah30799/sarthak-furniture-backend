@@ -8,7 +8,9 @@ const postgresqlConnection = () => {
     user: process.env.PG_USER || "postgres",
     password: process.env.PG_PASSWORD || "root",
     database: process.env.PG_DATABASE || "sarthak_furniture",
-    ssl: true,
+    ssl: {
+      rejectUnauthorized: false,
+    },
   });
 
   client
