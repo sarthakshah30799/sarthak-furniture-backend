@@ -11,7 +11,12 @@ const port = process.env.PORT || 5000;
 const app = express();
 app.use(cors());
 
-app.use(postgraphileConnection);
+try {
+  app.use(postgraphileConnection);
+} catch (er) {
+  console.log("error while graphile connection", er);
+}
+
 app.use(postgresqlConnection);
 
 app.listen(port, () => {
