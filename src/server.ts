@@ -4,6 +4,7 @@ import * as cors from "cors";
 import postgresqlConnection from "./postgresql/home";
 
 import * as dotenv from "dotenv";
+import { getSchema } from "./postgresql/graphile-build";
 dotenv.config();
 
 const port = process.env.PORT || 5000;
@@ -17,6 +18,7 @@ try {
   console.log("error while graphile connection", er);
 }
 
+app.use(getSchema);
 app.use(postgresqlConnection);
 
 app.listen(port, () => {
