@@ -7,7 +7,7 @@
     "database": "sarthak_furniture",
     "port": 8000
   },
-  "testing": {
+  "test": {
     "driver": "pg",
     "user": "srshzcntkgusrx",
     "password": "2388d67f7e9bae136502962489911c47e790bb0185a71e69aeb60f619972c602",
@@ -15,7 +15,7 @@
     "database": "d7pbujbhj07q7p",
     "port": 5432
   },
-  "production": {
+  "prod": {
     "driver": "pg",
     "user": "postgres",
     "password": "root",
