@@ -1,5 +1,6 @@
 /* Replace with your SQL commands */
-CREATE EXTENSION IF NOT EXISTS uuid_generate_v4()
+CREATE EXTENSION
+IF NOT EXISTS "uuid_generate_v4"
 
 CREATE TABLE public."chairs"
 (
