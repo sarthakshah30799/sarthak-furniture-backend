@@ -1,9 +1,8 @@
 /* Replace with your SQL commands */
 CREATE TABLE public."chairs"
 (
-    id uuid PRIMARY KEY,
-    name character varying COLLATE pg_catalog
-    ."default",
+    id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name character varying,
     type character varying,
     url character varying,
     price money,
@@ -15,7 +14,7 @@ CREATE TABLE public."chairs"
     seatColor character varying,
     seatMaterial character varying,
     headRest boolean,
-    heightAdujstable character varying,
+    heightAdjustable character varying,
     pushback character varying,
     stand CHARACTER VARYING,
     wheel CHARACTER VARYING
@@ -24,4 +23,4 @@ CREATE TABLE public."chairs"
 TABLESPACE pg_default;
 
 ALTER TABLE public."chairs"
-    OWNER to postgres;
+    OWNER to srshzcntkgusrx;

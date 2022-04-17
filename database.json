@@ -17,10 +17,10 @@
   },
   "prod": {
     "driver": "pg",
-    "user": "postgres",
-    "password": "root",
-    "host": "localhost",
-    "database": "sarthak_furniture",
-    "port": 8000
+    "user": "srshzcntkgusrx",
+    "password": "2388d67f7e9bae136502962489911c47e790bb0185a71e69aeb60f619972c602",
+    "host": "ec2-34-231-183-74.compute-1.amazonaws.com",
+    "database": "d7pbujbhj07q7p",
+    "port": 5432
   }
 }
