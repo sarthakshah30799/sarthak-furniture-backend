@@ -23,4 +23,4 @@ CREATE TABLE public."chairs"
 TABLESPACE pg_default;
 
 ALTER TABLE public."chairs"
-    OWNER to postgres;
+    OWNER to srshzcntkgusrx;

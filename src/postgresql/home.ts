@@ -13,7 +13,7 @@ const postgresqlConnection = () => {
     },
   });
 
-  client
+  return client
     .connect()
     .then(() => console.log("postgresql connection successfully"))
     .catch((err) => console.log("Error while connecting postgresql", err));
