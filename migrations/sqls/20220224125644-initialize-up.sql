@@ -1,6 +1,6 @@
 /* Replace with your SQL commands */
 DROP EXTENSION
-IF EXISTS "uuid_generate_v4"
+IF EXISTS "uuid_generate_v4";
 
 CREATE EXTENSION "uuid_generate_v4" SCHEMA public;
 
