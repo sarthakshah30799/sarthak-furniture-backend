@@ -1,4 +1,6 @@
 /* Replace with your SQL commands */
+CREATE EXTENSION IF NOT EXISTS uuid_generate_v4()
+
 CREATE TABLE public."chairs"
 (
     id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
