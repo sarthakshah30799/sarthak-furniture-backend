@@ -1,7 +1,8 @@
 /* Replace with your SQL commands */
-CREATE EXTENSION
-IF NOT EXISTS uuid_generate_v4
-();
+DROP EXTENSION
+IF EXISTS "uuid_generate_v4"
+
+CREATE EXTENSION "uuid_generate_v4" SCHEMA public;
 
 CREATE TABLE public."chairs"
 (
