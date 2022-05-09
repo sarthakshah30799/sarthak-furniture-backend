@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "@types/db-migrate-pg": "0.0.10",
+    "@types/node-fetch": "^2.6.1",
     "apollo-server-express": "^3.5.0",
     "aws-sdk": "^2.1037.0",
     "cors": "^2.8.5",
@@ -16,6 +17,7 @@
     "fs": "^0.0.1-security",
     "graphile-build": "^4.12.2",
     "graphile-build-pg": "^4.12.2",
+    "lodash": "^4.17.21",
     "multer": "^1.4.3",
     "multer-s3": "^2.9.0",
     "multiparty": "^4.2.2",
