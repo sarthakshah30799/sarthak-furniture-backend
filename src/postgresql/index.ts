@@ -1,4 +1,5 @@
 import { postgraphile } from "postgraphile";
+import { extendTendSchemPlugin } from "../graphql";
 
 const port: any = process.env.PG_PORT || 8000;
 
@@ -15,5 +16,6 @@ export default postgraphile(config, "public", {
   graphiql: true,
   enhanceGraphiql: true,
   retryOnInitFail: true,
+  appendPlugins: [extendTendSchemPlugin],
   ownerConnectionString: `postgres://${config.user}:${config.password}@${config.host}:${port}/${config.database}`,
 });

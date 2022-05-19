@@ -1,17 +1,21 @@
 import { instagramConfig } from "./instagram.config";
-import fetch, { BodyInit } from "node-fetch";
+import axios from "axios";
+
+const logme = (msg, ...rest) => {
+  console.log(`[Instagram methods:]${msg}...`, ...rest);
+};
 
 export class Instagram {
   private _apiUrl: string = instagramConfig.instagramApiUrl;
   private _graphApiUrl: string = instagramConfig.instagramGraphApiUrl;
-  private _appId: string = instagramConfig.appId;
+  private _appId: number = instagramConfig.appId;
   private _secretId: string = instagramConfig.secretKey;
   private _redirectUrl: string = instagramConfig.redirectUrl;
 
   async getAuthorizationToken(code: string) {
     try {
+      logme("Getting shortLived token");
       const formData = new URLSearchParams();
-
       const params = {
         client_id: this._appId,
         client_secret: this._secretId,
@@ -24,35 +28,44 @@ export class Instagram {
         formData.append(key, params[key]);
       }
 
-      const response = await fetch(`${this._apiUrl}`, {
-        method: "POST",
-        body: formData as BodyInit,
-      });
+      const response = await axios.post(
+        `${this._apiUrl}oauth/access_token`,
+        formData,
+        {
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        }
+      );
 
-      const responseData = response.body;
+      const responseData = response?.data;
+      logme("shortLived token received");
+
       const longLivedData = await this._getLongLivedToken(
         responseData["access_token"]
       );
+
       responseData["access_token"] = longLivedData["access_token"];
+      logme("Returns with longlived Token");
+
       return responseData;
     } catch (err) {
-      console.error("Error while generating token", err);
-      return err;
+      console.error("Error while generating token", err.response.data);
+      return null;
     }
   }
 
   private async _getLongLivedToken(shortLivedToken: string) {
     try {
       const params = {
-        grant_type: "ig_refresh_token",
+        grant_type: "ig_exchange_token",
+        client_secret: this._secretId,
         access_token: shortLivedToken,
       };
-
-      const response = await fetch(`${this._graphApiUrl}refresh_access_token`, {
-        method: "GET",
-        body: params as any,
+      logme("Getting longlived Token");
+      const response = await axios.get(`${this._graphApiUrl}access_token`, {
+        params,
       });
-      const longLivedData = response.body;
+      const longLivedData = response.data;
+      logme("longlived Token recieved");
       return longLivedData;
     } catch (err) {
       console.error("Error while generating long lived token", err);
@@ -60,15 +73,21 @@ export class Instagram {
   }
 
   async getAllInstagramMedia(token: string) {
-    const params = {
-      fields: "id,media_url,media_type",
-      access_token: token,
-    };
-    const response = await fetch(`${this._graphApiUrl}me/media`, {
-      body: params as any,
-    });
-
-    const media = response.body;
-    return media;
+    try {
+      const params = {
+        fields: "id,media_url,media_type",
+        access_token: token,
+      };
+      logme("Getting instagram media");
+      const response = await axios.get(`${this._graphApiUrl}me/media`, {
+        params,
+      });
+      logme("Fetched Instagram media");
+      const media = response.data;
+      return media;
+    } catch (err) {
+      logme("Error while getting media", err?.response?.data);
+      return err?.response?.data;
+    }
   }
 }
